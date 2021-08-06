@@ -1,0 +1,93 @@
+---
+title: "Day5_stats"
+author: "Shale"
+date: "8/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Stats practice
+
+## `starwars` dataset
+
+```{r, include=FALSE}
+summary(starwars)
+head(starwars)
+# wtf is up with birth_year?
+```
+
+## Graphy stuff
+`include=` show/hide code and output
+`echo=` show/hide code (output still shown)
+`eval=FALSE` prevents the chunk from running
+
+```{r, echo=FALSE, warning=FALSE}
+ggplot(data = starwars, aes(x=height, y=mass))+
+  geom_point()
+```
+
+## simple stats
+`na.rm = TRUE` will remove NA values (since `mean` won't evaluate with NAs). 
+
+```{r}
+sw_h_mn = mean(starwars$height, na.rm = TRUE)
+sw_h_vr = var(starwars$height, na.rm = TRUE)
+sw_h_sd = sqrt(sw_h_vr)
+# sd(starwars$height, na.rm = TRUE) would also give standard deviation
+
+```
+
+## best practice describing data
+Using inline code to present values instead of manual transfer
+
+Mean character height: `r round(sw_h_mn, 1)` cm
+Variance in the height of all characters: `r round(sw_h_vr, 1)` cm^2
+With a standard deviation of `r round(sw_h_sd, 1)` cm
+
+
+## Logical / boolean
+
+`|` or
+`&` and
+`!` not
+
+```{r}
+# numberics 
+5>10
+10 <= 13
+
+#strings
+"cat" > "elephant"
+"stupid" == "stupid"
+
+# vectors
+centipedes <- c(2, 4, 6, 2, 7, 9, 6, 8)
+centipedes <= 4
+centipedes <=3 | centipedes >= 7
+centipedes != 6
+
+
+# odd stuff
+0 == FALSE
+1 == TRUE
+# both return true (but 0 == TRUE returns FALSE, 1 == FALSE returns FALSE)
+
+```
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
